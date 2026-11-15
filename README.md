@@ -10,6 +10,14 @@ sito/
 ├── come-funziona.html  # Come funziona + esempio reale
 ├── servizi.html        # Servizi e prezzi
 ├── contatti.html       # Form di contatto
+├── grazie.html          # Thank you page (dopo l'invio del form)
+├── privacy.html         # Privacy policy
+├── cookie.html          # Cookie policy
+├── 404.html             # Page not found
+├── robots.txt           # robots.txt
+├── sitemap.xml          # Sitemap XML
+├── images/
+│   └── og.png           # Open Graph image
 ├── css/
 │   └── style.css       # Stile principale
 ├── js/

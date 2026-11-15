@@ -179,15 +179,7 @@
         var ok = response.ok && (data.success === 'true' || data.success === true);
         if (ok) {
           form.reset();
-          if (btn) {
-            btn.textContent = 'Invia richiesta';
-            btn.disabled = false;
-          }
-          if (status) {
-            status.style.display = '';
-            status.textContent = 'Messaggio inviato! Ti risponderemo entro 24 ore.';
-            status.className = 'form-status success';
-          }
+          window.location.href = 'grazie.html';
           return;
         }
         if (data.message && String(data.message).indexOf('Activation') !== -1) {
