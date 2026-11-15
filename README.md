@@ -10,71 +10,66 @@ sito/
 ├── come-funziona.html  # Come funziona + esempio reale
 ├── servizi.html        # Servizi e prezzi
 ├── contatti.html       # Form di contatto
-└── css/
-    └── style.css       # Stile principale
+├── css/
+│   └── style.css       # Stile principale
+├── js/
+│   └── main.js         # Animazioni + invio form
+└── .nojekyll           # Necessario per GitHub Pages
 ```
 
-## Come mettere online GRATIS
+## Come è pubblicato ORA (funzionante)
 
-### Opzione 1: GitHub Pages (consigliata)
+Il sito è online su **GitHub Pages**:
 
-1. Crea un account su github.com (gratuito)
-2. Crea un nuovo repository (es. "preventivi24-sito")
-3. Carica tutti i file della cartella `sito/` nel repository
-4. Vai su Settings → Pages → Source: "Deploy from a branch" → Branch: "main" → Folder: "/ (root)"
-5. Il sito sara online su: https://TUO-USERNAME.github.io/preventivi24-sito/
+- **URL:** https://gabriruss1.github.io/preventivi24/
+- **Repository:** https://github.com/Gabriruss1/preventivi24
+- **Pubblicazione:** push sul branch `main` → GitHub Pages ricompila in 1-2 minuti
+- **Costo:** 0 €
 
-### Opzione 2: Netlify (ancora piu semplice)
+### Aggiornare il sito
 
-1. Vai su netlify.com e crea un account gratuito
-2. Trascina la cartella `sito/` nella dashboard di Netlify
-3. Il sito sara online in 30 secondi su un URL tipo: https://random-name.netlify.app
-4. Puoi personalizzare il nome del sito nelle impostazioni
+```bash
+cd "sito"
+git add -A
+git commit -m "Aggiornamento sito"
+git push origin main
+```
 
-### Opzione 3: Cloudflare Pages
+Dopo il push, GitHub Pages pubblica automaticamente la nuova versione.
 
-1. Vai su pages.cloudflare.com e crea un account gratuito
-2. Connetti il tuo repository GitHub o carica i file direttamente
-3. Il sito sara online su: https://TUO-PROGETTO.pages.dev
+## Form di contatto (funzionante)
 
-## Dominio personalizzato (opzionale, ~10-15€/anno)
+Il form usa **FormSubmit** e invia ogni richiesta a `russo.enterprise.biz@gmail.com`.
 
-Per avere un dominio tipo preventivi24.it:
+- Endpoint AJAX: `https://formsubmit.co/ajax/russo.enterprise.biz@gmail.com`
+- Dominio attivato: `https://gabriruss1.github.io/`
+- L'attivazione va fatta una volta per dominio (link ricevuto via email e confermato).
+- Se in futuro si passa a un dominio personalizzato, va rifatta l'attivazione per il nuovo dominio.
+- Fallback: se il servizio non risponde, si apre il client email con il messaggio precompilato.
 
-1. Acquista il dominio su un registrar (es. Register.it, Aruba, Namecheap)
-   - Costo: ~10-15€/anno per un .it
-   - Budget: max 25€/anno (come da piano)
+## Dominio personalizzato (opzionale, ~10-15 €/anno)
 
-2. Configura il DNS:
-   - GitHub Pages: aggiungi un record CNAME o A nel pannello del registrar
-   - Netlify: aggiungi il dominio nelle impostazioni del sito, poi configura il DNS
+Per avere un dominio tipo `preventivi24.it`:
 
-3. HTTPS: attivato automaticamente da GitHub Pages / Netlify / Cloudflare
+1. Acquista il dominio su un registrar (es. Register.it, Aruba, Namecheap). Costo ~10-15 €/anno.
+2. Su GitHub: repository → Settings → Pages → Custom domain → inserisci il dominio.
+3. Nel pannello DNS del registrar crea un record `CNAME` per `www` verso `gabriruss1.github.io` e i record `A` per l'apice verso gli IP di GitHub Pages.
+4. Attendi la verifica e attiva "Enforce HTTPS".
+5. Dopo il cambio dominio, **riattiva FormSubmit** per il nuovo dominio (nuova submission + click sul link di attivazione).
 
 ## Da personalizzare prima di pubblicare
 
-- [ ] Sostituire [da inserire] con Partita IVA e telefono reali
-- [ ] Configurare il form di contatto (Formspree o Netlify Forms)
-- [ ] Sostituire info@preventivi24.it con l'email reale
-- [ ] Aggiungere il logo (se ce l hai)
-- [ ] Aggiungere la privacy policy completa
-- [ ] Verificare che tutti i link funzionino
-
-## Form di contatto
-
-Il form usa Formspree (gratuito fino a 50 invii/mese). Per attivarlo:
-
-1. Vai su formspree.io e crea un account gratuito
-2. Crea un nuovo form
-3. Copia l'endpoint (es. https://formspree.io/f/abc123)
-4. Sostituisci "YOUR_FORM_ID" in contatti.html con il tuo ID
-
-Alternativa: se usi Netlify, puoi usare Netlify Forms (gratuito) aggiungendo `netlify` all'attributo form.
+- [x] Sostituire l'email finta con quella reale (`russo.enterprise.biz@gmail.com`)
+- [x] Configurare il form di contatto (FormSubmit, attivo)
+- [x] Pubblicare il sito (GitHub Pages)
+- [ ] Sostituire `[da inserire]` con Partita IVA e telefono reali (quando disponibili)
+- [ ] Aggiungere il logo (se disponibile)
+- [ ] Privacy policy completa (oggi c'è una sintesi)
 
 ## Note
 
-- Il sito e completamente statico (HTML + CSS). Nessun backend, nessun database.
-- Nessun costo di hosting (GitHub Pages / Netlify / Cloudflare Pages sono gratuiti).
-- Il costo unico e il dominio (~10-15€/anno).
-- Il sito e responsive (funziona su mobile e desktop).
+- Il sito è completamente statico (HTML + CSS + JS). Nessun backend, nessun database.
+- Hosting gratuito e permanente su GitHub Pages.
+- Il costo unico è il dominio (~10-15 €/anno), opzionale.
+- Il sito è responsive (funziona su mobile e desktop).
 - SEO: meta description e title impostati per ogni pagina.
