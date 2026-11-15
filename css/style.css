@@ -269,6 +269,13 @@ nav .cta:hover {
   color: var(--grey);
 }
 
+.hero-note {
+  margin-top: 16px;
+  font-size: 13px;
+  color: var(--grey-dark);
+  font-style: italic;
+}
+
 .btn {
   display: inline-flex;
   align-items: center;

@@ -8,6 +8,7 @@ Sito statico per il servizio di riscrittura preventivi su 3 opzioni.
 sito/
 ├── index.html          # Landing page
 ├── come-funziona.html  # Come funziona + esempio reale
+├── esempi.html          # Esempi dei preventivi riscritti
 ├── servizi.html        # Servizi e prezzi
 ├── contatti.html       # Form di contatto
 ├── grazie.html          # Thank you page (dopo l'invio del form)
@@ -72,8 +73,11 @@ Per avere un dominio tipo `preventivi24.it`:
 - [x] Pubblicare il sito (GitHub Pages)
 - [x] Rimossi i segnaposto `[da inserire]` e il link `tel:+39` morto
 - [ ] Aggiungere Partita IVA e telefono reali quando disponibili
+- [ ] Aggiungere il numero di telefono reale e il link WhatsApp
 - [ ] Aggiungere il logo (se disponibile)
 - [ ] Privacy policy completa (oggi c'è una sintesi)
+- [ ] Completare l'informativa privacy con tutti i dati del titolare
+- [ ] Configurare il servizio di analytics con il dominio reale (Plausible: preventivi24)
 
 ## Note
 

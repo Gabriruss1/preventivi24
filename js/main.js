@@ -157,6 +157,11 @@
   }
 
   form.addEventListener('submit', function (e) {
+    var honey = form.querySelector('input[name="_honey"]');
+    if (honey && honey.value && honey.value.trim() !== '') {
+      // Honeypot: bot submission -> ignore silently
+      return;
+    }
     e.preventDefault();
     var btn = form.querySelector('button[type="submit"]');
     var status = document.getElementById('formStatus');
