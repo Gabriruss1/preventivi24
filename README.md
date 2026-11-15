@@ -62,7 +62,8 @@ Per avere un dominio tipo `preventivi24.it`:
 - [x] Sostituire l'email finta con quella reale (`russo.enterprise.biz@gmail.com`)
 - [x] Configurare il form di contatto (FormSubmit, attivo)
 - [x] Pubblicare il sito (GitHub Pages)
-- [ ] Sostituire `[da inserire]` con Partita IVA e telefono reali (quando disponibili)
+- [x] Rimossi i segnaposto `[da inserire]` e il link `tel:+39` morto
+- [ ] Aggiungere Partita IVA e telefono reali quando disponibili
 - [ ] Aggiungere il logo (se disponibile)
 - [ ] Privacy policy completa (oggi c'è una sintesi)
 
@@ -72,4 +73,5 @@ Per avere un dominio tipo `preventivi24.it`:
 - Hosting gratuito e permanente su GitHub Pages.
 - Il costo unico è il dominio (~10-15 €/anno), opzionale.
 - Il sito è responsive (funziona su mobile e desktop).
+- Animazioni con CSS e JavaScript nativo, senza dipendenze esterne.
 - SEO: meta description e title impostati per ogni pagina.

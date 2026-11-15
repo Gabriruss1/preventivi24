@@ -1,9 +1,7 @@
 ﻿/* Preventivi24 - Design distintivo v2 */
 /* Palette: deep navy + warm amber + off-white */
 /* Typography: Fraunces (display) + DM Sans (body) + JetBrains Mono (numbers) */
-/* Animations: GSAP ScrollTrigger */
-
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,600;9..144,800&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap');
+/* Animations: IntersectionObserver + CSS transitions (no external libraries) */
 
 :root {
   --navy: #0F1729;
@@ -333,14 +331,18 @@ nav .cta:hover {
   padding: 12px 0;
   border-bottom: 1px solid var(--border);
   font-size: 14px;
-  opacity: 0;
-  transform: translateY(10px);
+  opacity: 1;
+  transform: none;
+  animation: quoteIn 0.6s ease both;
 }
 
-.quote-row.visible {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+.quote-row:nth-child(1) { animation-delay: 0.1s; }
+.quote-row:nth-child(2) { animation-delay: 0.25s; }
+.quote-row:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes quoteIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .quote-row:last-child {
@@ -369,30 +371,33 @@ nav .cta:hover {
   font-size: 18px;
 }
 
-/* ---- Scroll reveal animations ---- */
-.reveal {
+/* ---- Scroll reveal animations ----
+   Visible by default. Only when JS is active (html.js-anim) the elements
+   start hidden and are revealed by IntersectionObserver. If the script
+   fails to load, nothing is ever hidden. */
+html.js-anim .reveal {
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 0.7s ease, transform 0.7s ease;
 }
 
-.reveal.visible {
+html.js-anim .reveal.visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-.reveal-stagger > * {
+html.js-anim .reveal-stagger > * {
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-.reveal-stagger.visible > *:nth-child(1) { transition-delay: 0s; opacity: 1; transform: translateY(0); }
-.reveal-stagger.visible > *:nth-child(2) { transition-delay: 0.1s; opacity: 1; transform: translateY(0); }
-.reveal-stagger.visible > *:nth-child(3) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
-.reveal-stagger.visible > *:nth-child(4) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
-.reveal-stagger.visible > *:nth-child(5) { transition-delay: 0.4s; opacity: 1; transform: translateY(0); }
-.reveal-stagger.visible > *:nth-child(6) { transition-delay: 0.5s; opacity: 1; transform: translateY(0); }
+html.js-anim .reveal-stagger.visible > *:nth-child(1) { transition-delay: 0s; opacity: 1; transform: translateY(0); }
+html.js-anim .reveal-stagger.visible > *:nth-child(2) { transition-delay: 0.1s; opacity: 1; transform: translateY(0); }
+html.js-anim .reveal-stagger.visible > *:nth-child(3) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
+html.js-anim .reveal-stagger.visible > *:nth-child(4) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
+html.js-anim .reveal-stagger.visible > *:nth-child(5) { transition-delay: 0.4s; opacity: 1; transform: translateY(0); }
+html.js-anim .reveal-stagger.visible > *:nth-child(6) { transition-delay: 0.5s; opacity: 1; transform: translateY(0); }
 
 /* ---- Problem section ---- */
 .problem-section {
@@ -740,7 +745,7 @@ nav .cta:hover {
 
 .social-proof-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 24px;
   text-align: center;
 }
