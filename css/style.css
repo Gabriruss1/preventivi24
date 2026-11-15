@@ -263,6 +263,12 @@ nav .cta:hover {
   align-items: center;
 }
 
+.cta-note {
+  margin-top: 12px;
+  font-size: 13px;
+  color: var(--grey);
+}
+
 .btn {
   display: inline-flex;
   align-items: center;
@@ -1042,6 +1048,18 @@ html.js-anim .reveal-stagger.visible > *:nth-child(6) { transition-delay: 0.5s; 
 .contact-form .form-status.error {
   color: var(--red);
   display: block;
+}
+
+.contact-form .form-note {
+  margin-top: 14px;
+  font-size: 13px;
+  color: var(--grey);
+  text-align: center;
+  line-height: 1.5;
+}
+
+.contact-form .form-note a {
+  color: var(--amber);
 }
 
 /* ---- Back to top ---- */
