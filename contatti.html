@@ -52,8 +52,8 @@
 
 <section class="hero">
   <div class="wrap">
-    <h1 class="display-xl">Contattaci</h1>
-    <p>Primo preventivo gratis. Se non consegno in 72 ore, non paghi. Scrivici e ti mandiamo un esempio.</p>
+    <h1 class="display-xl" id="heroTitle">Contattaci</h1>
+    <p id="heroLead">Primo preventivo gratis. Se non consegno in 72 ore, non paghi. Scrivici e ti mandiamo un esempio.</p>
   </div>
 </section>
 
@@ -81,10 +81,11 @@
       </div>
       <div class="contact-form">
         <form action="https://formsubmit.co/russo.enterprise.biz@gmail.com" method="POST" id="contactForm">
-          <input type="hidden" name="_subject" value="Nuova richiesta dal sito Preventivi24">
+          <input type="hidden" name="_subject" id="subjectField" value="Nuova richiesta dal sito Preventivi24">
           <input type="hidden" name="_captcha" value="false">
           <input type="hidden" name="_template" value="table">
           <input type="hidden" name="_next" value="https://gabriruss1.github.io/preventivi24/grazie.html">
+          <input type="hidden" name="servizio" id="servizioField" value="">
           <input type="text" name="_honey" style="display:none">
 
           <label for="nome">Nome e cognome *</label>
@@ -110,6 +111,16 @@
 
           <label for="telefono">Telefono</label>
           <input type="tel" id="telefono" name="telefono" placeholder="+39 333 1234567">
+
+          <label for="tipo_lavoro" id="tipoLavoroLabel" style="display:none">Tipo di lavoro</label>
+          <select id="tipo_lavoro" name="tipo_lavoro" style="display:none">
+            <option value="">Seleziona...</option>
+            <option value="bagno">Bagno / ristrutturazione</option>
+            <option value="serramenti">Serramenti / infissi</option>
+            <option value="fotovoltaico">Fotovoltaico</option>
+            <option value="climatizzazione">Climatizzazione</option>
+            <option value="altro">Altro</option>
+          </select>
 
           <label for="messaggio">Messaggio *</label>
           <textarea id="messaggio" name="messaggio" required placeholder="Descrivi brevemente la tua azienda e cosa ti serve. Se hai un preventivo, allegacelo via email."></textarea>
@@ -166,5 +177,20 @@
 </footer>
 
 <script src="js/main.js"></script>
+<script>
+(function(){
+  var p=new URLSearchParams(location.search);
+  if(p.get('servizio')==='confronto'){
+    var s=document.getElementById('subjectField'); if(s) s.value='Confronto preventivi — Scelta24';
+    var sv=document.getElementById('servizioField'); if(sv) sv.value='confronto';
+    var h=document.getElementById('heroTitle'); if(h) h.textContent='Invia i tuoi preventivi';
+    var l=document.getElementById('heroLead'); if(l) l.textContent='Mandaci i preventivi o i contratti che vuoi confrontare. Li analizziamo riga per riga e ti inviamo il verdetto, controllato da una persona. Gratis.';
+    var tl=document.getElementById('tipoLavoroLabel'); if(tl) tl.style.display='block';
+    var ts=document.getElementById('tipo_lavoro'); if(ts) ts.style.display='block';
+    var m=document.getElementById('messaggio'); if(m) m.placeholder='Descrivi il lavoro e indica quanti preventivi vuoi confrontare. Allega i PDF rispondendo alla mail di conferma oppure scrivici a russo.enterprise.biz@gmail.com con i file in allegato.';
+    var fn=document.querySelector('.form-note'); if(fn) fn.textContent='Gratis. I documenti non vengono pubblicati ne\' usati per addestrare modelli e vengono eliminati dopo la consegna.';
+  }
+})();
+</script>
 </body>
 </html>
