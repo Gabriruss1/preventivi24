@@ -80,6 +80,16 @@
       }
     });
   });
+
+  // Recalculate open FAQ height on resize
+  window.addEventListener('resize', function () {
+    faqItems.forEach(function (item) {
+      if (item.hasAttribute('open')) {
+        var c = item.querySelector('p');
+        if (c) c.style.maxHeight = c.scrollHeight + 'px';
+      }
+    });
+  });
 })();
 
 // ---- Scroll progress bar ----
@@ -163,6 +173,16 @@
     if (window.innerWidth > 900 && menu.classList.contains('active')) {
       closeMenu();
     }
+  });
+})();
+
+// ---- Mark current page in navigation ----
+(function () {
+  var page = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+  if (page === '' ) page = 'index.html';
+  document.querySelectorAll('nav a, .mobile-menu a').forEach(function (a) {
+    var href = (a.getAttribute('href') || '').split('?')[0].split('/').pop().toLowerCase();
+    if (href && href === page) a.setAttribute('aria-current', 'page');
   });
 })();
 
