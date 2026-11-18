@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 190" role="img" aria-label="Preventivi24">
+  <!-- speed lines -->
+  <g stroke="#7FB3F2" stroke-width="11" stroke-linecap="round" fill="none">
+    <line x1="18" y1="72" x2="74" y2="72"/>
+    <line x1="18" y1="106" x2="86" y2="106"/>
+    <line x1="18" y1="140" x2="74" y2="140"/>
+  </g>
+  <!-- document -->
+  <path d="M84 24 Q84 12 98 12 H170 L200 42 V150 Q200 164 186 164 H98 Q84 164 84 150 V24 Z"
+        fill="#F5F9FF" stroke="#0B6EF0" stroke-width="12" stroke-linejoin="round"/>
+  <!-- folded corner -->
+  <path d="M170 12 L200 42 L200 12 Z" fill="#0B6EF0"/>
+  <!-- check circle -->
+  <circle cx="196" cy="150" r="38" fill="#0B6EF0" stroke="#FFFFFF" stroke-width="5"/>
+  <path d="M178 150 L190 162 L214 138" fill="none" stroke="#FFFFFF" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

@@ -1,8 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="Preventivi24">
   <rect width="100" height="100" rx="18" fill="#0F1729"/>
-  <rect x="20" y="12" width="60" height="76" rx="7" fill="none" stroke="#FAFAF8" stroke-width="4"/>
-  <path d="M65 12 L80 27 L65 27 Z" fill="#FAFAF8"/>
-  <rect x="30" y="38" width="40" height="3" rx="1.5" fill="#FAFAF8"/>
-  <rect x="30" y="49" width="40" height="5" rx="2" fill="#FAFAF8"/>
-  <rect x="30" y="62" width="40" height="8" rx="3" fill="#E8A838"/>
+  <g transform="translate(11,21) scale(0.3)">
+    <g stroke="#7FB3F2" stroke-width="11" stroke-linecap="round" fill="none">
+      <line x1="18" y1="72" x2="74" y2="72"/>
+      <line x1="18" y1="106" x2="86" y2="106"/>
+      <line x1="18" y1="140" x2="74" y2="140"/>
+    </g>
+    <path d="M84 24 Q84 12 98 12 H170 L200 42 V150 Q200 164 186 164 H98 Q84 164 84 150 V24 Z" fill="#F5F9FF" stroke="#0B6EF0" stroke-width="12" stroke-linejoin="round"/>
+    <path d="M170 12 L200 42 L200 12 Z" fill="#0B6EF0"/>
+    <circle cx="196" cy="150" r="38" fill="#0B6EF0" stroke="#FFFFFF" stroke-width="5"/>
+    <path d="M178 150 L190 162 L214 138" fill="none" stroke="#FFFFFF" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
 </svg>

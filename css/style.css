@@ -140,8 +140,8 @@ h1, h2, h3 {
 }
 
 .logo-mark {
-  width: 30px;
   height: 30px;
+  width: auto;
   flex-shrink: 0;
   display: block;
 }
@@ -979,8 +979,8 @@ html.js-anim .reveal-stagger.visible > *:nth-child(6) { transition-delay: 0.5s; 
 }
 
 .footer-brand .logo-mark {
-  width: 22px;
   height: 22px;
+  width: auto;
 }
 
 .footer-brand .dot {
