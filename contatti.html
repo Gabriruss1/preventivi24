@@ -86,6 +86,12 @@
             Lun - Ven, 9:00 - 18:00
           </div>
         </div>
+        <div style="margin-top:24px;padding:20px;background:var(--navy);border:1px solid var(--border);border-radius:8px;">
+          <strong style="color:var(--white);display:block;margin-bottom:8px;">Hai già un preventivo?</strong>
+          <p style="font-size:14px;color:var(--grey);margin-bottom:12px;line-height:1.6;">Inviacelo via email in PDF o Word. Prima di inviarlo, oscura i dati del cliente che non servono alla riscrittura (nomi, indirizzi, contatti). Se vuoi solo informazioni, usa il modulo qui a fianco: non è necessario inviare un documento.</p>
+          <a href="mailto:russo.enterprise.biz@gmail.com?subject=Invio%20preventivo" class="btn btn--amber" style="display:inline-block;">Invia il preventivo via email</a>
+          <p style="font-size:13px;color:var(--grey-dark);margin-top:8px;">Oppure scrivi a <a href="mailto:russo.enterprise.biz@gmail.com" style="color:var(--amber);">russo.enterprise.biz@gmail.com</a></p>
+        </div>
         <p style="font-size:14px;color:var(--grey-dark);margin-top:32px;">Trattamento dei dati ai sensi del GDPR. Non invieremo spam.</p>
       </div>
       <div class="contact-form">
@@ -132,11 +138,11 @@
           </select>
 
           <label for="messaggio">Messaggio *</label>
-          <textarea id="messaggio" name="messaggio" required placeholder="Descrivi brevemente la tua azienda e cosa ti serve. Se hai un preventivo, allegacelo via email."></textarea>
+          <textarea id="messaggio" name="messaggio" required placeholder="Descrivi brevemente la tua azienda e cosa ti serve."></textarea>
 
           <button type="submit" class="btn btn--amber">Invia richiesta</button>
-          <div class="form-status" id="formStatus"></div>
-          <p class="form-note">Il primo preventivo è gratuito. Se non consegno in 72 ore, non paghi.</p>
+          <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
+          <p class="form-note">Il primo preventivo è gratuito e non ti obbliga a proseguire. Se vuoi ordinare una nuova riscrittura singola, il prezzo è di 190 € + IVA.</p>
         </form>
       </div>
     </div>
@@ -146,8 +152,12 @@
 <section class="section" style="background:var(--navy);">
   <div class="wrap" style="max-width:720px;">
     <h2 class="display-lg" style="text-align:center;">Privacy e trattamento dati</h2>
-    <p style="font-size:15px;color:var(--grey);margin-bottom:12px;margin-top:24px;">I dati raccolti tramite questo modulo sono utilizzati esclusivamente per rispondere alla tua richiesta. Non vengono ceduti a terzi. Il trattamento avviene ai sensi dell'art. 6.1.f GDPR (interesse legittimo) e dell'art. 6.1.a (consenso).</p>
-    <p style="font-size:15px;color:var(--grey);">Hai il diritto di accedere, rettificare, cancellare i tuoi dati in qualsiasi momento, scrivendo a russo.enterprise.biz@gmail.com.</p>
+    <p style="font-size:15px;color:var(--grey);margin-bottom:12px;margin-top:24px;"><strong style="color:var(--white);">Titolare del trattamento:</strong> Preventivi24, servizio gestito da Gabriele Russo, contattabile all'indirizzo russo.enterprise.biz@gmail.com. (Dati societari e fiscali disponibili su richiesta.)</p>
+    <p style="font-size:15px;color:var(--grey);margin-bottom:12px;"><strong style="color:var(--white);">Finalità e basi giuridiche:</strong> rispondere alla tua richiesta (art. 6, par. 1, lett. b) GDPR — esecuzione di misure precontrattuali); gestire il servizio (interesse legittimo, lett. f); pubblicare un esempio come caso di studio solo con tuo consenso esplicito e preventivo (lett. a), revocabile in qualsiasi momento.</p>
+    <p style="font-size:15px;color:var(--grey);margin-bottom:12px;"><strong style="color:var(--white);">Fornitori:</strong> il modulo di contatto è gestito da FormSubmit, che trasmette e conserva le risposte per 30 giorni. Hosting su GitHub Pages. Analytics senza cookie via Plausible. Questi fornitori trattano i dati per nostro conto; non vendiamo né cediamo i tuoi dati a terzi.</p>
+    <p style="font-size:15px;color:var(--grey);margin-bottom:12px;"><strong style="color:var(--white);">Dati raccolti:</strong> nome, email, telefono, azienda, settore, tipo di lavoro e messaggio. Se ci invii un preventivo, esso può contenere dati di terzi (tuoi clienti): oscura prima dell'invio i dati non necessari alla riscrittura. Conserviamo le richieste per il tempo necessario a gestire il servizio e gli obblighi fiscali (massimo 24 mesi), poi le cancelliamo.</p>
+    <p style="font-size:15px;color:var(--grey);margin-bottom:12px;"><strong style="color:var(--white);">I tuoi diritti:</strong> accesso, rettifica, cancellazione, limitazione, portabilità e opposizione. Puoi esercitarli scrivendo a russo.enterprise.biz@gmail.com. Hai diritto di proporre reclamo all'Autorità Garante per la protezione dei dati personali (garanteprivacy.it).</p>
+    <p style="font-size:15px;color:var(--grey);"><strong style="color:var(--white);">Campi obbligatori:</strong> nome e email. Se non li fornisci, non possiamo risponderti. Il consenso al caso di studio è facoltativo e non condiziona il servizio.</p>
   </div>
 </section>
 

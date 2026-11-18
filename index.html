@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Preventivi24 — Il tuo preventivo su 3 opzioni. Il cliente sceglie il valore.</title>
-<meta name="description" content="Riscriviamo il tuo preventivo su 3 opzioni (base, consigliata, completa) in 24-72 ore. Il cliente sceglie il valore, quasi sempre la Consigliata. Per PMI italiane.">
+<title>Riscrittura preventivi in tre opzioni per imprese | Preventivi24</title>
+<meta name="description" content="Riscriviamo il tuo preventivo su 3 opzioni (base, consigliata, completa) in 24-72 ore. Il cliente sceglie il valore, spesso la Consigliata. Per PMI italiane.">
 <meta property="og:title" content="Preventivi24 — Il tuo preventivo su 3 opzioni">
 <meta property="og:description" content="Riscriviamo il tuo preventivo su 3 opzioni in 24-72 ore. Il cliente sceglie il valore, non il prezzo. Primo preventivo gratuito.">
 <meta property="og:type" content="website">
@@ -13,7 +13,7 @@
 <meta property="og:image" content="https://gabriruss1.github.io/preventivi24/images/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Preventivi24 — Il tuo preventivo su 3 opzioni. Il cliente sceglie il valore.">
-<meta name="twitter:description" content="Riscriviamo il tuo preventivo su 3 opzioni (base, consigliata, completa) in 24-72 ore. Il cliente sceglie il valore, quasi sempre la Consigliata. Per PMI italiane.">
+<meta name="twitter:description" content="Riscriviamo il tuo preventivo su 3 opzioni (base, consigliata, completa) in 24-72 ore. Il cliente sceglie il valore, spesso la Consigliata. Per PMI italiane.">
 <meta name="twitter:image" content="https://gabriruss1.github.io/preventivi24/images/og.png">
 <meta name="theme-color" content="#0F1729">
 <script defer data-domain="preventivi24" src="https://plausible.io/js/script.js"></script>
@@ -33,7 +33,7 @@
   "offers": [
     { "@type": "Offer", "name": "Pilota", "price": "190", "priceCurrency": "EUR" },
     { "@type": "Offer", "name": "Sistema", "price": "1290", "priceCurrency": "EUR" },
-    { "@type": "Offer", "name": "Gestione", "price": "490", "priceCurrency": "EUR", "priceSpecification": { "@type": "UnitPriceSpecification", "billingIncrement": "P1M" } }
+    { "@type": "Offer", "name": "Gestione", "price": "490", "priceCurrency": "EUR", "priceSpecification": { "@type": "UnitPriceSpecification", "unitCode": "MON", "billingIncrement": 1 } }
   ]
 }
 </script>
@@ -79,12 +79,12 @@
     <div class="hero-grid">
       <div class="hero-content">
         <h1 class="display-xl">Il tuo preventivo su <span class="accent">3 opzioni</span>.</h1>
-        <p>Il cliente non confronta più il tuo prezzo con quello del concorrente. Confronta 3 livelli dello stesso lavoro. E sceglie quasi sempre la Consigliata.</p>
+        <p>Il cliente non confronta più il tuo prezzo con quello del concorrente. Confronta 3 livelli dello stesso lavoro. E spesso sceglie la Consigliata.</p>
         <div class="hero-actions">
           <a href="contatti.html" class="btn btn--amber">Mandami il preventivo</a>
           <a href="come-funziona.html" class="btn btn--ghost">Come funziona</a>
         </div>
-        <p class="cta-note">2 minuti · serve solo il PDF · il primo è gratis</p>
+        <p class="cta-note">2 minuti per la richiesta · serve solo il PDF · il primo è gratis</p>
       </div>
       <div class="hero-visual">
         <div class="quote-compare">
@@ -118,7 +118,7 @@
       </div>
       <div class="problem-item">
         <h3>Confronto sul prezzo</h3>
-        <p>Il cliente mette il tuo preventivo accanto a quello del concorrente. Chi è più economico vince. Sempre.</p>
+        <p>Il cliente mette il tuo preventivo accanto a quello del concorrente. Chi è più economico tende a vincere.</p>
       </div>
       <div class="problem-item">
         <h3>Lavori persi</h3>
@@ -132,7 +132,7 @@
   <div class="wrap">
     <div class="demo-intro reveal">
       <h2 class="display-lg">Prova tu stesso</h2>
-      <p>Trascina lo slider per vedere la trasformazione. A sinistra il preventivo originale. A destra lo stesso preventivo riscritto su 3 opzioni.</p>
+      <p>Confronto statico: a sinistra il preventivo originale, a destra lo stesso preventivo riscritto su 3 opzioni. Ogni voce su una riga.</p>
       <p class="cta-note" style="margin-top:8px;">Esempio illustrativo: nome e dati sono modificati.</p>
     </div>
     <div class="demo-compare">
@@ -152,7 +152,7 @@
           <span class="line">Impermeabilizzazione ............. 980 €</span>
           <span class="line">Smaltimento macerie .............. 750 €</span>
           <span class="total">TOTALE: 12.460 € (IVA incl.)</span>
-          <span class="line" style="margin-top:16px;color:var(--red);">Esito: PERSO — concorrente era il 12% più economico.</span>
+          <span class="line" style="margin-top:16px;color:var(--red);">Esito: non accettato — il preventivo del concorrente costava il 12% in meno. (Esempio illustrativo)</span>
         </div>
       </div>
       <div class="demo-after">
@@ -180,7 +180,7 @@
               <li>Mobile 90 cm + LED</li>
               <li>Scaldasalviette</li>
             </ul>
-            <p style="font-size:12px;color:var(--amber);margin-top:8px;font-weight:600;">La maggior parte sceglie questa.</p>
+            <p style="font-size:12px;color:var(--amber);margin-top:8px;font-weight:600;">Molti clienti scelgono questa.</p>
           </div>
           <div class="demo-option">
             <h4>COMPLETA — Il massimo</h4>
@@ -198,7 +198,7 @@
       </div>
       <div class="demo-handle"></div>
     </div>
-    <p class="demo-caption reveal">Il cliente non confronta più 12.460 con 10.965. Confronta 8.514 vs 12.460 vs 15.620. Quasi sempre sceglie la <strong>Consigliata</strong>. La Consigliata costa come il preventivo originale: non paghi di più, vedi il valore in più.</p>
+    <p class="demo-caption reveal">Il cliente non confronta più 12.460 con 10.965. Confronta 8.514 vs 12.460 vs 15.620. Spesso sceglie la <strong>Consigliata</strong>. La Consigliata costa come il preventivo originale: non paghi di più, vedi il valore in più. (Esempio illustrativo.)</p>
   </div>
 </section>
 
@@ -235,7 +235,7 @@
           <li>Mobile 90 cm + LED</li>
           <li>Scaldasalviette</li>
         </ul>
-        <p style="font-size:13px;color:var(--amber);margin-top:16px;font-weight:600;">La maggior parte sceglie questa.</p>
+        <p style="font-size:13px;color:var(--amber);margin-top:16px;font-weight:600;">Molti clienti scelgono questa.</p>
       </div>
       <div class="option-card">
         <span class="tier">COMPLETA</span>
@@ -267,12 +267,13 @@
           <div class="doc-line">2. Sanitari <span class="value">a terra / sospesi / premium</span></div>
           <div class="doc-line">3. Doccia <span class="value">piatto / walk-in / cromoterapia</span></div>
           <div class="doc-line">4. Mobile bagno <span class="value">60 cm / 90 cm LED / completo</span></div>
-          <div class="doc-line">5. Riscaldamento <span class="value">nessuno / nessuno / a pavimento</span></div>
-          <div class="doc-line">6. Manodopera <span class="value">inclusa in ogni opzione</span></div>
-          <div class="doc-line">7. Tempi di esecuzione <span class="value">2 sett. / 3 sett. / 4 sett.</span></div>
-          <div class="doc-line">8. Garanzia sui lavori <span class="value">2 anni in tutte</span></div>
-          <div class="doc-line">9. "Perché conviene" <span class="value">nota in ogni opzione</span></div>
-          <div class="doc-line">10. Tabella di confronto <span class="value">inclusa</span></div>
+          <div class="doc-line">5. Scaldasalviette <span class="value">no / sì / sì</span></div>
+          <div class="doc-line">6. Riscaldamento a pavimento <span class="value">no / no / sì</span></div>
+          <div class="doc-line">7. Manodopera <span class="value">inclusa in ogni opzione</span></div>
+          <div class="doc-line">8. Tempi di esecuzione <span class="value">2 sett. / 3 sett. / 4 sett.</span></div>
+          <div class="doc-line">9. Garanzia sui lavori <span class="value">2 anni in tutte</span></div>
+          <div class="doc-line">10. "Perché conviene" <span class="value">nota in ogni opzione</span></div>
+          <div class="doc-line">11. Tabella di confronto <span class="value">inclusa</span></div>
         </div>
         <div class="anatomy-text">
           <div class="step">
@@ -426,11 +427,11 @@
       </details>
       <details class="faq-item">
         <summary>Il primo preventivo è gratuito?</summary>
-        <p>Sì. Il primo preventivo riscritto è gratuito, in cambio di un feedback onesto e della possibilità di usarlo come caso studio (senza dati sensibili del cliente finale). Nessun obbligo di proseguire.</p>
+        <p>Sì. La prima riscrittura è gratuita e non ti obbliga a proseguire. Se decidi di ordinare una nuova riscrittura singola, il prezzo è di 190 € + IVA. L'uso della proposta come esempio pubblico è una scelta separata, da concordare prima della pubblicazione. Nessun obbligo di proseguire.</p>
       </details>
       <details class="faq-item">
         <summary>Garantite i risultati?</summary>
-        <p>No. Garantiamo solo la consegna in 72 ore. Non garantiamo che il cliente vincerà il lavoro. Ma il principio della scelta guidata è provato: il cliente che vede 3 opzioni sceglie quasi sempre la Consigliata, non il prezzo più basso.</p>
+        <p>No. Garantiamo solo la consegna in 72 ore. Non garantiamo che il cliente accetti il preventivo. Ma il principio della scelta guidata è noto: il cliente che vede 3 opzioni tende a scegliere la Consigliata, non il prezzo più basso.</p>
       </details>
       <details class="faq-item">
         <summary>Funziona per il mio settore?</summary>
@@ -442,7 +443,7 @@
       </details>
       <details class="faq-item">
         <summary>Cosa succede se non consegno in 72 ore?</summary>
-        <p>Non paghi. La garanzia è sulla consegna, non sui risultati. Se non rispettiamo i tempi, il lavoro è gratuito.</p>
+        <p>Non paghi. La garanzia è sulla consegna, non sui risultati. Le 72 ore decorrono dalla ricezione del materiale completo (preventivo + eventuali chiarimenti), in giorni lavorativi (lunedì-venerdì, esclusi festivi). Se non rispettiamo i tempi, il lavoro è gratuito. La garanzia si applica al piano Pilota (singola riscrittura) e al piano Gestione (ogni riscrittura del mese).</p>
       </details>
     </div>
   </div>

@@ -12,7 +12,7 @@
   --cream: #F5F0E8;
   --white: #FAFAF8;
   --grey: #94A3B8;
-  --grey-dark: #64748B;
+  --grey-dark: #8A9AB0;
   --green: #22C55E;
   --red: #EF4444;
   --border: rgba(255,255,255,0.08);
@@ -210,6 +210,8 @@ nav .cta:hover {
   padding: 80px 24px 24px;
   flex-direction: column;
   gap: 24px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .mobile-menu.active {
@@ -585,7 +587,74 @@ html.js-anim .reveal-stagger.visible > *:nth-child(6) { transition-delay: 0.5s; 
   border-bottom: none;
 }
 
-/* ---- Process section ---- */
+/* ---- Anatomy section ---- */
+.anatomy-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+  margin-top: 40px;
+}
+
+.anatomy-doc {
+  background: var(--navy-light);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 24px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+}
+
+.doc-header {
+  color: var(--amber);
+  font-weight: 700;
+  margin-bottom: 16px;
+  letter-spacing: 0.05em;
+}
+
+.doc-line {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--grey);
+}
+
+.doc-line:last-child { border-bottom: none; }
+
+.doc-line .value {
+  color: var(--white);
+  text-align: right;
+}
+
+.anatomy-text .step {
+  margin-bottom: 24px;
+}
+
+.anatomy-text .step h3 {
+  font-size: 18px;
+  margin-bottom: 8px;
+  color: var(--white);
+}
+
+.anatomy-progress {
+  display: flex;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.anatomy-progress .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--amber);
+  opacity: 0.4;
+}
+
+@media (max-width: 900px) {
+  .anatomy-grid { grid-template-columns: 1fr; }
+}
 .process-section {
   background: var(--cream);
   color: var(--navy);
@@ -1211,6 +1280,7 @@ html.js-anim .reveal-stagger.visible > *:nth-child(6) { transition-delay: 0.5s; 
 
 /* ---- Reduced motion ---- */
 @media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;

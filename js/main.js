@@ -101,18 +101,26 @@
   btn.className = 'back-to-top';
   btn.innerHTML = '&uarr;';
   btn.setAttribute('aria-label', 'Torna su');
+  btn.setAttribute('tabindex', '-1');
+  btn.setAttribute('aria-hidden', 'true');
   document.body.appendChild(btn);
+
+  var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   window.addEventListener('scroll', function () {
     if (window.scrollY > 400) {
       btn.classList.add('visible');
+      btn.setAttribute('tabindex', '0');
+      btn.setAttribute('aria-hidden', 'false');
     } else {
       btn.classList.remove('visible');
+      btn.setAttribute('tabindex', '-1');
+      btn.setAttribute('aria-hidden', 'true');
     }
   }, { passive: true });
 
   btn.addEventListener('click', function () {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: prefersReduced ? 'auto' : 'smooth' });
   });
 })();
 
@@ -126,6 +134,12 @@
   toggle.setAttribute('aria-controls', menu.id);
   toggle.setAttribute('aria-expanded', 'false');
 
+  function closeMenu() {
+    menu.classList.remove('active');
+    toggle.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
   toggle.addEventListener('click', function () {
     var active = menu.classList.toggle('active');
     toggle.setAttribute('aria-expanded', active ? 'true' : 'false');
@@ -133,53 +147,85 @@
   });
 
   menu.querySelectorAll('a').forEach(function (link) {
-    link.addEventListener('click', function () {
-      menu.classList.remove('active');
-      toggle.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
-    });
+    link.addEventListener('click', closeMenu);
+  });
+
+  // Close on Escape
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && menu.classList.contains('active')) {
+      closeMenu();
+      toggle.focus();
+    }
+  });
+
+  // Close when switching to desktop layout
+  window.addEventListener('resize', function () {
+    if (window.innerWidth > 900 && menu.classList.contains('active')) {
+      closeMenu();
+    }
   });
 })();
 
-// ---- Form AJAX submit (FormSubmit) ----
+// ---- Show selected plan from query string ----
+(function () {
+  var params = new URLSearchParams(window.location.search);
+  var servizio = params.get('servizio');
+  if (!servizio) return;
+  var field = document.getElementById('servizioField');
+  if (field) field.value = servizio;
+  var info = document.querySelector('.contact-info');
+  if (info) {
+    var note = document.createElement('p');
+    note.style.cssText = 'font-size:14px;color:var(--amber);margin-top:12px;font-weight:600;';
+    var labels = { pilota: 'Piano Pilota (190 € + IVA)', sistema: 'Piano Sistema (1.290 € + IVA)', gestione: 'Piano Gestione (490 €/mese + IVA)' };
+    note.textContent = 'Hai selezionato: ' + (labels[servizio] || servizio) + '.';
+    info.appendChild(note);
+  }
+})();
 (function () {
   var form = document.querySelector('#contactForm');
   if (!form) return;
 
-  // Show success message if redirected back with ?sent=1
-  if (window.location.search.indexOf('sent=1') !== -1) {
-    var status = document.getElementById('formStatus');
+  var btn = form.querySelector('button[type="submit"]');
+  var status = document.getElementById('formStatus');
+
+  function setBtn(label, disabled) {
+    if (btn) { btn.textContent = label; btn.disabled = !!disabled; }
+  }
+  function setStatus(text, cls) {
     if (status) {
       status.style.display = '';
-      status.textContent = 'Messaggio inviato! Ti risponderemo entro 24 ore.';
-      status.className = 'form-status success';
+      status.textContent = text;
+      status.className = 'form-status' + (cls ? ' ' + cls : '');
     }
+  }
+  function clearStatus() {
+    if (status) { status.style.display = 'none'; status.textContent = ''; status.className = 'form-status'; }
   }
 
   form.addEventListener('submit', function (e) {
     var honey = form.querySelector('input[name="_honey"]');
     if (honey && honey.value && honey.value.trim() !== '') {
-      // Honeypot: bot submission -> ignore silently
+      // Honeypot: bot submission -> block completely, no HTML fallback
+      e.preventDefault();
       return;
     }
     e.preventDefault();
-    var btn = form.querySelector('button[type="submit"]');
-    var status = document.getElementById('formStatus');
-    if (btn) {
-      btn.textContent = 'Invio in corso...';
-      btn.disabled = true;
-    }
-    if (status) {
-      status.style.display = 'none';
-      status.className = 'form-status';
-    }
+
+    setBtn('Invio in corso...', true);
+    clearStatus();
+
+    var controller = new AbortController();
+    var timeoutId = setTimeout(function () { controller.abort(); }, 15000);
 
     fetch('https://formsubmit.co/ajax/russo.enterprise.biz@gmail.com', {
       method: 'POST',
       body: new FormData(form),
-      headers: { 'Accept': 'application/json' }
+      headers: { 'Accept': 'application/json' },
+      signal: controller.signal
     })
     .then(function (response) {
+      clearTimeout(timeoutId);
       return response.json().then(function (data) {
         var ok = response.ok && (data.success === 'true' || data.success === true);
         if (ok) {
@@ -188,28 +234,23 @@
           return;
         }
         if (data.message && String(data.message).indexOf('Activation') !== -1) {
-          if (btn) {
-            btn.textContent = 'Invia richiesta';
-            btn.disabled = false;
-          }
-          if (status) {
-            status.style.display = '';
-            status.textContent = 'Messaggio ricevuto! Completa l’attivazione dalla casella email per ricevere le richieste.';
-            status.className = 'form-status success';
-          }
+          setBtn('Invia richiesta', false);
+          setStatus('Il modulo è stato ricevuto, ma la casella di destinazione non è ancora attiva. Riprova più tardi oppure scrivici direttamente a russo.enterprise.biz@gmail.com.', 'error');
           return;
         }
         throw new Error(data.message || 'Server error');
       });
     })
-    .catch(function () {
-      // Fallback: build mailto link so the request is never lost
-      var nome = form.querySelector('[name="nome"]').value;
-      var email = form.querySelector('[name="email"]').value;
-      var azienda = form.querySelector('[name="azienda"]').value;
-      var settore = form.querySelector('[name="settore"]').value;
-      var telefono = form.querySelector('[name="telefono"]').value;
-      var messaggio = form.querySelector('[name="messaggio"]').value;
+    .catch(function (err) {
+      clearTimeout(timeoutId);
+      setBtn('Invia richiesta', false);
+
+      var nome = (form.querySelector('[name="nome"]') || {}).value || '';
+      var email = (form.querySelector('[name="email"]') || {}).value || '';
+      var azienda = (form.querySelector('[name="azienda"]') || {}).value || '';
+      var settore = (form.querySelector('[name="settore"]') || {}).value || '';
+      var telefono = (form.querySelector('[name="telefono"]') || {}).value || '';
+      var messaggio = (form.querySelector('[name="messaggio"]') || {}).value || '';
 
       var subject = encodeURIComponent('Richiesta preventivo - ' + nome + ' - ' + azienda);
       var mailBody = encodeURIComponent(
@@ -221,17 +262,16 @@
         'Telefono: ' + telefono + '\n\n' +
         'Messaggio:\n' + messaggio
       );
-      window.location.href = 'mailto:russo.enterprise.biz@gmail.com?subject=' + subject + '&body=' + mailBody;
+      var mailto = 'mailto:russo.enterprise.biz@gmail.com?subject=' + subject + '&body=' + mailBody;
 
-      if (btn) {
-        btn.textContent = 'Invia richiesta';
-        btn.disabled = false;
-      }
-      if (status) {
-        status.style.display = '';
-        status.textContent = 'Il tuo client email si aprirà con il messaggio precompilato. Premi Invia per spedirlo.';
-        status.className = 'form-status success';
-      }
+      setStatus('La richiesta non è stata inviata dal modulo. Puoi riprovare, oppure inviarla via email con il pulsante qui sotto.', 'error');
+
+      var existing = form.querySelector('.mailto-fallback');
+      if (existing) existing.remove();
+      var fallback = document.createElement('p');
+      fallback.className = 'mailto-fallback form-note';
+      fallback.innerHTML = '<a href="' + mailto + '" class="btn btn--amber" style="display:inline-block;margin-top:8px;">Apri l\'app di posta con il messaggio precompilato</a>';
+      if (status && status.parentNode) status.parentNode.insertBefore(fallback, status.nextSibling);
     });
   });
 })();
