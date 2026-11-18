@@ -993,6 +993,7 @@ html.js-anim .reveal-stagger.visible > *:nth-child(6) { transition-delay: 0.5s; 
   line-height: 1.7;
 }
 
+.footer h3,
 .footer h4 {
   font-family: 'DM Sans', sans-serif;
   font-size: 13px;
