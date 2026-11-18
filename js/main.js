@@ -44,11 +44,15 @@
 
 // ---- FAQ accordion ----
 (function () {
+  var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var faqItems = document.querySelectorAll('.faq-item');
   faqItems.forEach(function (item) {
     var summary = item.querySelector('summary');
     var content = item.querySelector('p');
     if (!summary || !content) return;
+
+    // With reduced motion: rely on native <details> toggle, no animation.
+    if (prefersReduced) return;
 
     // Start closed
     content.style.maxHeight = '0';
@@ -81,15 +85,16 @@
     });
   });
 
-  // Recalculate open FAQ height on resize
-  window.addEventListener('resize', function () {
-    faqItems.forEach(function (item) {
-      if (item.hasAttribute('open')) {
-        var c = item.querySelector('p');
-        if (c) c.style.maxHeight = c.scrollHeight + 'px';
-      }
+  if (!prefersReduced) {
+    window.addEventListener('resize', function () {
+      faqItems.forEach(function (item) {
+        if (item.hasAttribute('open')) {
+          var c = item.querySelector('p');
+          if (c) c.style.maxHeight = c.scrollHeight + 'px';
+        }
+      });
     });
-  });
+  }
 })();
 
 // ---- Scroll progress bar ----
@@ -109,7 +114,7 @@
 (function () {
   var btn = document.createElement('button');
   btn.className = 'back-to-top';
-  btn.innerHTML = '&uarr;';
+  btn.textContent = '\u2191';
   btn.setAttribute('aria-label', 'Torna su');
   btn.setAttribute('tabindex', '-1');
   btn.setAttribute('aria-hidden', 'true');
@@ -143,28 +148,49 @@
   if (!menu.id) menu.id = 'mobile-menu';
   toggle.setAttribute('aria-controls', menu.id);
   toggle.setAttribute('aria-expanded', 'false');
+  menu.setAttribute('aria-hidden', 'true');
 
   function closeMenu() {
     menu.classList.remove('active');
     toggle.setAttribute('aria-expanded', 'false');
+    menu.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
+    toggle.focus();
   }
 
   toggle.addEventListener('click', function () {
     var active = menu.classList.toggle('active');
     toggle.setAttribute('aria-expanded', active ? 'true' : 'false');
+    menu.setAttribute('aria-hidden', active ? 'false' : 'true');
     document.body.style.overflow = active ? 'hidden' : '';
+    if (active) {
+      var firstLink = menu.querySelector('a');
+      if (firstLink) firstLink.focus();
+    }
   });
 
   menu.querySelectorAll('a').forEach(function (link) {
     link.addEventListener('click', closeMenu);
   });
 
-  // Close on Escape
+  // Focus trap + Escape
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && menu.classList.contains('active')) {
+    if (!menu.classList.contains('active')) return;
+    if (e.key === 'Escape') {
       closeMenu();
-      toggle.focus();
+      return;
+    }
+    if (e.key !== 'Tab') return;
+    var focusables = Array.prototype.slice.call(menu.querySelectorAll('a, button, [tabindex]:not([tabindex=\"-1\"])'));
+    if (!focusables.length) return;
+    var first = focusables[0];
+    var last = focusables[focusables.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
     }
   });
 

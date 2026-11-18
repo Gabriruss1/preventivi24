@@ -9,7 +9,8 @@
 <meta property="og:description" content="Contatta Preventivi24. Il primo esempio è gratuito.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="it_IT">
-<link rel="canonical" href="https://gabriruss1.github.io/preventivi24/contatti.html">
+<link rel="canonical" href="https://gabriruss1.github.io/preventivi24/contatti.html"
+<meta property="og:url" content="https://gabriruss1.github.io/preventivi24/contatti.html">>
 <meta property="og:image" content="https://gabriruss1.github.io/preventivi24/images/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Contatti - Preventivi24">
@@ -98,7 +99,7 @@
           <input type="text" name="_honey" style="display:none">
 
           <label for="nome">Nome e cognome *</label>
-          <input type="text" id="nome" name="nome" required placeholder="Mario Rossi" autocomplete="name">
+          <input type="text" id="nome" name="nome" required placeholder="Mario Rossi" autocomplete="name" aria-describedby="formStatus">
 
           <label for="azienda">Azienda</label>
           <input type="text" id="azienda" name="azienda" placeholder="Rossi Serramenti Srl" autocomplete="organization">
@@ -116,7 +117,7 @@
           </select>
 
           <label for="email">Email *</label>
-          <input type="email" id="email" name="email" required placeholder="mario@rossiserramenti.it" autocomplete="email">
+          <input type="email" id="email" name="email" required placeholder="mario@rossiserramenti.it" autocomplete="email" aria-describedby="formStatus">
 
           <label for="telefono">Telefono</label>
           <input type="tel" id="telefono" name="telefono" placeholder="+39 333 1234567" autocomplete="tel">
@@ -132,7 +133,7 @@
           </select>
 
           <label for="messaggio">Messaggio *</label>
-          <textarea id="messaggio" name="messaggio" required placeholder="Descrivi brevemente la tua azienda e cosa ti serve."></textarea>
+          <textarea id="messaggio" name="messaggio" required placeholder="Descrivi brevemente la tua azienda e cosa ti serve." aria-describedby="formStatus"></textarea>
 
           <button type="submit" class="btn btn--amber">Invia richiesta</button>
           <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
